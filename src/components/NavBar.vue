@@ -8,7 +8,7 @@
         ></v-toolbar-title
       >
       <v-spacer></v-spacer>
-      <!-- <v-text-field
+      <v-text-field
         flat
         hide-details
         append-icon="mdi-magnify"
@@ -17,7 +17,7 @@
         dense
         v-model="searchText"
         @click:append="search"
-      ></v-text-field> -->
+      ></v-text-field>
 
       <v-spacer></v-spacer>
 
