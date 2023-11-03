@@ -36,7 +36,7 @@
                         class="pl-0 text-capitalize"
                         color="primary"
                         href="true"
-                        >Forget Password?</v-btn
+                        >¿Olvidaste la contraseña?</v-btn
                       >
                     </p>
                     <v-text-field
@@ -55,14 +55,14 @@
                       color="primary"
                       router
                       to="signup"
-                      >Create account</v-btn
+                      >Crear cuenta</v-btn
                     >
                     <v-btn
                       type="submit"
                       class="primary"
                       :loading="loading"
                       depressed
-                      >Sign in</v-btn
+                      >Iniciar sesión</v-btn
                     >
                   </div>
                 </form>
