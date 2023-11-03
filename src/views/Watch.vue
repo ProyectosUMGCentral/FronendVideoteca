@@ -5,14 +5,13 @@
         <v-alert prominent class="mx-auto" type="error" v-if="errored">
           <v-row align="center">
             <v-col class="grow">
-              <div class="title">Error!</div>
+              <div class="title">¡Error!</div>
               <div>
-                Something went wrong, but don’t fret — let’s give it another
-                shot.
+                Algo salió mal pero no se preocupe, intentemos de nuevo.
               </div>
             </v-col>
             <v-col class="shrink">
-              <v-btn @click="actions">Take action</v-btn>
+              <v-btn @click="actions">Intentar de nuevo</v-btn>
             </v-col>
           </v-row>
         </v-alert>
@@ -31,6 +30,7 @@
                       ref="videoPlayer"
                       controls
                       style="height: 100%; width: 100%"
+                      @play="true"
                     >
                       <source
                         :src="`${url}/uploads/videos/${video.url}`"
