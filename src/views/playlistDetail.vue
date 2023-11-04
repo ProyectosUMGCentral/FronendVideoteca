@@ -23,19 +23,19 @@
             sm="6"
             md="4"
             lg="3"
-            v-for="(item, i) in loading ? 12 : playLists"
+            v-for="(video, i) in loading ? 12 : videos"
             :key="i"
             class="mx-xs-auto"
           >
             <v-skeleton-loader type="card-avatar" :loading="loading">
-              <playlistCard
-              :card="{ maxWidth: 350 }"
-              :playList="item"
-              :channel="item.userId"
-              ></playlistCard>
+              <video-card
+                :card="{ maxWidth: 350 }"
+                :video="video"
+                :channel="video.userId"
+              ></video-card>
             </v-skeleton-loader>
           </v-col>
-          <v-col class="text-center" v-if="playLists.length === 0 && !loading">
+          <v-col class="text-center" v-if="videos.length === 0 && !loading">
             <p>No liked videos yet</p>
           </v-col>
           <v-col cols="12" sm="12" md="12" lg="12">
@@ -75,8 +75,7 @@
 <script>
 import InfiniteLoading from 'vue-infinite-loading'
 
-// import VideoCard from '@/components/VideoCard'
-import playlistCard from "@/components/playlistCard.vue";
+import VideoCard from '@/components/VideoCard'
 import playlist from '@/services/playlist'
 import moment from 'moment'
 export default {
@@ -85,16 +84,20 @@ export default {
     loading: false,
     loaded: false,
     errored: false,
-    playLists: [],
+    idPlaylist: null,
+    videos: [],
     page: 1
   }),
+  mounted() {
+    this.idPlaylist = this.$route.params.id
+  },
   methods: {
     async getVideos($state) {
       if (!this.loaded) {
         this.loading = true
       }
 
-      const result = await playlist.getPlayList()
+      const videos = await playlist.getUserPlaylistDetail(this.idPlaylist)
         .catch((err) => {
           console.log(err)
           this.errored = true
@@ -103,13 +106,12 @@ export default {
           this.loading = false
         })
 
-      if (typeof result === 'undefined') return
+      if (typeof videos === 'undefined') return
 
-
-      if (result.data.data.length) {
-        this.playLists.push(...result.data.data)
-         $state.complete()
-        this.loaded = true
+      if (videos.data.data.length) {
+        this.videos.push(...videos.data.data)
+        $state.complete()
+        this.loaded = false
       } else {
         $state.complete()
       }
@@ -119,8 +121,7 @@ export default {
     }
   },
   components: {
-    // VideoCard,
-    playlistCard,
+    VideoCard,
     InfiniteLoading
   }
 }

@@ -309,6 +309,11 @@ export default {
             link: '/history',
             icon: 'mdi-history'
           },
+          {
+            title: 'Listas de reproducción',
+            link: '/playlist',
+            icon: 'mdi-playlist-play'
+          },
           // {
           //   title: 'Your videos',
           //   link: '#yv',

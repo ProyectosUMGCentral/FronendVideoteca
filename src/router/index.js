@@ -126,6 +126,26 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/playlist',
+    name: 'PlayList',
+    components: {
+      NavBar,
+      default: () =>
+        import(/* webpackChunkName: "video" */ '../views/playlist.vue')
+    },
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/playlistDetail/:id',
+    name: 'playlistDetail',
+    components: {
+      NavBar,
+      default: () =>
+        import(/* webpackChunkName: "video" */ '../views/playlistDetail.vue')
+    },
+    meta: { requiresAuth: true }
+  },
+  {
     path: '/search',
     name: 'Search',
     components: {
