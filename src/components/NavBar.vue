@@ -304,11 +304,11 @@ export default {
           //   link: '#l',
           //   icon: 'mdi-play-box-multiple'
           // },
-          // {
-          //   title: 'History',
-          //   link: '/history',
-          //   icon: 'mdi-history'
-          // },
+          {
+            title: 'Historial',
+            link: '/history',
+            icon: 'mdi-history'
+          },
           // {
           //   title: 'Your videos',
           //   link: '#yv',
